@@ -23,8 +23,10 @@ while True:
         if totalFingers >= 4 :
             pyautogui.keyDown('right')
             pyautogui.keyUp('left')
+            print("left")
         if totalFingers <= 1:
             pyautogui.keyDown('left')
             pyautogui.keyUp('right')
+            print("right")
     cv2.imshow('Livefeed',img)
-    cv2.waitKey(10)
+    cv2.waitKey(1)
