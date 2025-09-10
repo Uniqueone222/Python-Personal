@@ -20,10 +20,10 @@ while True:
         fingers = detector.fingersUp(hand[0])
         totalFingers = fingers.count(1)
         cv2.putText(img, f'Fingers: {totalFingers}', (50,50), cv2.FONT_HERSHEY_PLAIN, 2, (0,0,255))
-        if totalFingers <=4 :
+        if totalFingers >= 4 :
             pyautogui.keyDown('right')
             pyautogui.keyUp('left')
-        if totalFingers >= 1:
+        if totalFingers <= 1:
             pyautogui.keyDown('left')
             pyautogui.keyUp('right')
     cv2.imshow('Livefeed',img)
