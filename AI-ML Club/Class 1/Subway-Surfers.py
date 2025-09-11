@@ -12,8 +12,9 @@
 #b. If you jump once or roll once and want same action again, just hide and show your thumb again.
 
 #Some Tips
-#a. Always show your thumb as it keeps your controls in a neutral position
-#b. At starting Show both hand open in a upfront position(Thumbs towards middle)
+#a. Basic control of the game was Open hand and close hand and thumb is a action repeater.
+#b. Always show your thumb as it keeps your controls in a neutral position.
+#c. At starting Show both hand open in a upfront position(Thumbs towards middle).
 
 #Notes
 #1. If you want some changes for control mapping like Right hand controls changing lane to right ad jump and Left hand controlling
@@ -44,14 +45,14 @@ while True:
                 fingers = detector.fingersUp(h)
                 totalFingers = fingers.count(1)
                 cv2.putText(img, f'Fingers: {totalFingers}', (50,50), cv2.FONT_HERSHEY_PLAIN, 2, (0,0,255))
-                if totalFingers > 4 and last_change !="right":
+                if totalFingers >= 4 and last_change !="right":
                     pyautogui.keyDown('right')
                     pyautogui.keyUp('right')
                     print("right once")
                     last_change = "right"
                 elif totalFingers >=1 and totalFingers <= 4:
                     last_change = "none"
-                elif totalFingers == 0  and last_change !="left":
+                elif totalFingers <=1  and last_change !="left":
                     pyautogui.keyDown('left')
                     pyautogui.keyUp('left')
                     print("left once")
@@ -59,15 +60,15 @@ while True:
             if h['type'] == 'Left':
                 fingers = detector.fingersUp(h)
                 totalFingers = fingers.count(1)
-                cv2.putText(img, f'Fingers: {totalFingers}', (50,50), cv2.FONT_HERSHEY_PLAIN, 2, (0,0,255))
-                if totalFingers > 4  and last_vertical !="space":
+                cv2.putText(img, f'Fingers: {totalFingers}', (400,50), cv2.FONT_HERSHEY_PLAIN, 2, (0,0,255))
+                if totalFingers >= 4  and last_vertical !="space":
                     pyautogui.keyDown('space')
                     pyautogui.keyUp('space')
                     print("jump once")
                     last_vertical = "space"
                 elif totalFingers >=1 and totalFingers <= 4:
                     last_vertical = "none"
-                elif totalFingers == 0  and last_vertical !="down":
+                elif totalFingers <=1  and last_vertical !="down":
                     pyautogui.keyDown('down')
                     pyautogui.keyUp('down')
                     print("down once")
